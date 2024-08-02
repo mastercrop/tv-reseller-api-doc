@@ -34,7 +34,7 @@
   "anchors": [
      {
       "name": "API Reference",
-      "openapi": "https://raw.githubusercontent.com/LokiWasHere/docs/main/api-reference/openapi.json",
+      "openapi": "/openapi.json",
       "url": "api-reference",
       "icon": "square-terminal"
     }
