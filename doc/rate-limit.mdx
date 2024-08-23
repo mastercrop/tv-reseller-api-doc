@@ -1,0 +1,27 @@
+---
+title: Rate Limiting
+description: We use rate limiting to safeguard the stability of our API.
+---
+
+## Limits
+
+Rate limiting is a crucial feature for maintaining the stability and security of an API. It allows you to control the number of requests made to the API within a specific time period, preventing abuse, protecting server resources, and ensuring fair usage. By imposing restrictions on the number of requests per minute for each API key, rate limiting effectively mitigates unauthorized access, excessive usage, and potential denial-of-service attacks (DoS).
+
+To better understand the rate limits in place, please refer to the table below:
+
+| Request                    | Rate limit     |
+| -------------------------- | -------------- |
+| Authentication             | 10 per minute  |
+| GET Requests               | 100 per minute |
+| POST, PUT, DELETE Requests | 50 per minute  |
+
+Any request over the limit will return a 429 Too Many Requests error.
+
+Our server responses also return your API limit, remaining requests, and seconds until the limit resets as headers. If you `curl` the endpoints with the `-vvv` flag, you'll see the headers as such.
+
+```
+...
+< X-RateLimit-Limit: 100
+< X-RateLimit-Remaining: 30
+< X-RateLimit-Reset: 53
+```

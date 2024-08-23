@@ -1,82 +1,82 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "CCCambox TV Reseller API",
+  "versions": ["v1"],
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
+  "openapi": "/openapi.json",
   "favicon": "/favicon.svg",
+  "api": {
+    "baseUrl": "https://api.cccambox.com",
+    "auth": {
+      "method": "key",
+      "name": "x-api-key"
+    }
+  },
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#2c72eb",
+    "light": "#2c72eb",
+    "dark": "#2c72eb",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#2c72eb",
+      "to": "#2c72eb"
     }
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Login",
+      "url": "https://web.cccambox.com/dashboard"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Get Started",
+    "url": "https://web.cccambox.com/checkout/resellers"
   },
+
   "tabs": [
+    { "name": "Documentation", "url": "/doc" },
     {
       "name": "API Reference",
-      "url": "api-reference"
-    }
+      "url": "/reference",
+      "openapi": "/openapi.json",
+      "version": "v1"
+    },
+    { "name": "Libraries", "url": "/libraries", "isDefaultHidden": true }
   ],
+
   "anchors": [
-     {
-      "name": "API Reference",
-      "openapi": "/api-reference/openapi.json",
-      "url": "api-reference",
-      "icon": "square-terminal"
-    }
+    {
+      "name": "Website",
+      "icon": "globe-pointer",
+      "url": "https://wwv.cccambox.com"
+    },
+    { "name": "Github", "icon": "github", "url": "https://github.com" }
   ],
+
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
+      "group": "Getting Started",
+      "pages": ["doc/introduction", "doc/api-changelog"]
     },
     {
-      "group": "Essentials",
+      "group": "API Overview",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "doc/api-keys",
+        "doc/versionning",
+        "doc/protocol",
+        "doc/authentification",
+        "doc/pagination",
+        "doc/making-requests",
+        "doc/rate-limit",
+        "doc/request-ids",
+        "doc/error-handling"
       ]
     }
   ],
+
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "website": "https://wwv.cccambox.com"
   }
 }

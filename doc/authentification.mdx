@@ -1,0 +1,15 @@
+---
+title: Authentification
+---
+
+## How to use the API Key
+
+The CCCambox Reseller API uses API keys to authenticate requests. To generate an API Key, please refer to [API Keys page](/doc/api-keys).
+
+All API requests should include your API key in an `x-api-key` HTTP header as follows, replacing `$CCCAMBOX_API_KEY` with your actual key:
+
+```
+x-api-key: $CCCAMBOX_API_KEY
+```
+
+All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authentication will also fail.

@@ -1,0 +1,26 @@
+---
+title: Making Requests
+description: This guide provides instructions on making API requests using cURL. It includes a sample command that can be copied into the terminal, along with details on replacing the placeholder API key. The response format is also shown. The guide concludes with an encouragement to explore more advanced requests using CCCamBox.
+---
+
+## Request example
+
+You can paste the command below into your terminal to run your first API request. Make sure to replace $CCCAMBOX_API_KEY with your [secret API key](/documentation/authentification).
+
+```bash
+curl --request GET \
+  --url https://api.cccambox.com/v1/public/credits \
+  --header 'x-api-key: $CCCAMBOX_API_KEY'
+```
+
+This request queries your actual account balance of credits. You should receive a response that looks like this:
+
+```json
+{
+  "credits": 1000
+}
+```
+
+Congratulations! You have successfully made your first API request using cURL. Now you can continue exploring the API and building more advanced requests to interact with the CCCamBox service.
+
+If you have any questions or need further assistance, feel free to reach out to our support team. Happy coding!

@@ -1,0 +1,55 @@
+---
+title: Versionning
+---
+
+When we make backwards-incompatible changes to the API, we release new versions. The latest released version is `v1`.
+
+To use a specific version of the API, make sure to update the `version` in the API url.
+
+## Backwards compatible changes
+
+We do NOT consider the following types of changes to be breaking changes.
+
+- Adding new API resources, paths, and methods.
+
+- Adding new optional request parameters or headers to existing APIs.
+
+- Expanding acceptable values for an exisitng request parameter or header.
+
+- Adding new attributes to existing API responses.
+
+- Expanding or collapsing possible values for an attribute in existing API responses.
+
+  - **⚠️ WARNING:** Your implementation should gracefully handle unknown values. You should NOT expect string attributes to be a static enumeration.
+
+- Adding new items in array attribute values.
+
+- Reordering of items in array attribute values.
+
+- Chaning the order of properties in existing API responses.
+
+- Changing the length or format of opaque strings, such as object IDs, error messages, and other human-readble strings.
+
+- New validations or restrictions added to protect our systems from bad behavior, such as rate limits or restrictions against malicious input in requests.
+
+## Breaking changes
+
+We consider the following types of changes to be backwards-incompatible. When we make these changes, we release a new version of the API. You're in charge of when you get breaking changes—you get them when you upgrade your API version.
+
+- Removing or renaming an existing API.
+
+- Removing or renaming existing request parameters or headers.
+
+- Removing support for a previously acceptable request parameter or header value.
+
+- Adding a new required request parameter or header value to an existing API.
+
+- Adding validations or restrictions that would cause previously valid requests to be considered invalid.
+
+- Removing or renaming an attribute in existing API responses.
+
+- Changing the type of an attribute in existing API responses.
+
+- Changing the status code for a particular scenario (except when the existing status code is 404 or 5xx).
+
+- Changing the semantics of a value for an existing request parameter, header, or attribute in existing API responses.
