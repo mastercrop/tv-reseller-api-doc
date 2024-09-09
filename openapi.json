@@ -199,19 +199,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -445,19 +445,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -608,15 +608,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   },
@@ -641,7 +637,7 @@
                         "description": "The new label of the line.",
                         "example": "My TV Line"
                       },
-                      "new_macaddress": {
+                      "macaddress": {
                         "anyOf": [{ "type": "string" }, { "type": "boolean" }],
                         "description": "The new MAC address to assign to the line. To remove the assigned macaddress, set false",
                         "example": "67:21:4C:24:76:97"
@@ -672,15 +668,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   }
@@ -711,19 +703,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -896,15 +888,11 @@
                 "properties": {
                   "id": {
                     "type": "string",
-                    "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                    "description": "The ID of the line. Either the ID or the username is required to run this request."
                   },
                   "username": {
                     "type": "string",
                     "description": "The username of the line."
-                  },
-                  "macaddress": {
-                    "type": "string",
-                    "description": "MAC address of the line."
                   }
                 }
               }
@@ -1130,19 +1118,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -1423,19 +1411,19 @@
                         "type": "string",
                         "nullable": true,
                         "description": "Date of expiration of the line.",
-                        "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                        "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                       },
                       "start_date": {
                         "type": "string",
                         "nullable": true,
                         "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                        "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                        "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                       },
                       "created_at": {
                         "type": "string",
                         "nullable": true,
                         "description": "Initial creation date of the line.",
-                        "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                        "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                       }
                     },
                     "required": [
@@ -1554,238 +1542,6 @@
         }
       }
     },
-    "/v1/public/lines/link": {
-      "put": {
-        "summary": "Link MAG to Line",
-        "description": "Associate a MAG device with a specific line.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
-                      },
-                      "username": {
-                        "type": "string",
-                        "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "new_macaddress": {
-                        "anyOf": [{ "type": "string" }, { "type": "boolean" }],
-                        "description": "The MAC address to assign to the line. To remove the assigned macaddress, set false",
-                        "example": "67:21:4C:24:76:97"
-                      }
-                    },
-                    "required": ["new_macaddress"]
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Ok: MAG linked",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": { "type": "number" },
-                    "hostname": { "type": "string", "nullable": true },
-                    "username": { "type": "string" },
-                    "password": { "type": "string" },
-                    "label": { "type": "string" },
-                    "enabled": { "type": "boolean" },
-                    "connections": { "type": "number" },
-                    "macaddress": { "type": "string", "nullable": true },
-                    "parental_code": { "type": "string", "nullable": true },
-                    "is_trial": { "type": "boolean" },
-                    "exp_date": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Date of expiration of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
-                    },
-                    "start_date": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
-                    },
-                    "created_at": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Initial creation date of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "hostname",
-                    "username",
-                    "password",
-                    "label",
-                    "enabled",
-                    "connections",
-                    "macaddress",
-                    "parental_code",
-                    "is_trial",
-                    "exp_date",
-                    "start_date",
-                    "created_at"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request: Errors in supplied parameters.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
-                    "message": {
-                      "type": "string",
-                      "example": "Request error occurred."
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "errors": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
-                              "path": {
-                                "type": "array",
-                                "items": { "type": "string" }
-                              }
-                            },
-                            "required": ["code", "message", "path"]
-                          }
-                        }
-                      },
-                      "required": ["errors"]
-                    }
-                  },
-                  "required": ["code", "message", "data"]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Auth Error: Not authorized.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
-                    "message": {
-                      "type": "string",
-                      "example": "Not authorized to perform this action."
-                    }
-                  },
-                  "required": ["code", "message"]
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Line Not Found: The line you're looking for could not be found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
-                    "message": {
-                      "type": "string",
-                      "example": "Line not found."
-                    }
-                  },
-                  "required": ["code", "message"]
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "A line with this mac address already exist",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": ["macaddress_already_exist"]
-                    }
-                  },
-                  "required": ["code"]
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Rate limit error: too many requests.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
-                    "message": {
-                      "type": "string",
-                      "example": "Rate limit exceeded."
-                    }
-                  },
-                  "required": ["code", "message"]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error: handler died.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
-                    "message": {
-                      "type": "string",
-                      "example": "Internal server error occurred."
-                    },
-                    "requestId": { "type": "string" }
-                  },
-                  "required": ["code", "message", "requestId"]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/public/lines/suspend": {
       "put": {
         "summary": "Suspend Line",
@@ -1800,15 +1556,11 @@
                 "properties": {
                   "id": {
                     "type": "string",
-                    "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                    "description": "The ID of the line. Either the ID or the username is required to run this request."
                   },
                   "username": {
                     "type": "string",
                     "description": "The username of the line."
-                  },
-                  "macaddress": {
-                    "type": "string",
-                    "description": "MAC address of the line."
                   }
                 }
               }
@@ -1837,19 +1589,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -2000,15 +1752,11 @@
                 "properties": {
                   "id": {
                     "type": "string",
-                    "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                    "description": "The ID of the line. Either the ID or the username is required to run this request."
                   },
                   "username": {
                     "type": "string",
                     "description": "The username of the line."
-                  },
-                  "macaddress": {
-                    "type": "string",
-                    "description": "MAC address of the line."
                   }
                 }
               }
@@ -2037,19 +1785,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                      "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -2202,15 +1950,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   },
@@ -2257,19 +2001,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -2458,15 +2202,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   },
@@ -2512,19 +2252,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Sep 09 2024 05:50:18 GMT+0100 (GMT+01:00)"
+                          "example": "Mon Sep 09 2024 16:44:13 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -2734,15 +2474,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   },
@@ -2908,15 +2644,11 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The ID of the line. Either the ID or the username or the MAC address is required to run this request."
+                        "description": "The ID of the line. Either the ID or the username is required to run this request."
                       },
                       "username": {
                         "type": "string",
                         "description": "The username of the line."
-                      },
-                      "macaddress": {
-                        "type": "string",
-                        "description": "MAC address of the line."
                       }
                     }
                   },
