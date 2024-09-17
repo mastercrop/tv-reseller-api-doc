@@ -9,7 +9,7 @@
   "openapi": "/openapi.json",
   "favicon": "/favicon.svg",
   "api": {
-    "baseUrl": "https://api.cccambox.com",
+    "baseUrl": "https://api.reselliptv.com",
     "auth": {
       "method": "key",
       "name": "x-api-key"
@@ -27,12 +27,12 @@
   "topbarLinks": [
     {
       "name": "Login",
-      "url": "https://web.cccambox.com/dashboard"
+      "url": "https://web.HIDDEN.com/dashboard"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://web.cccambox.com/checkout/resellers"
+    "url": "https://web.HIDDEN.com/checkout/resellers"
   },
 
   "tabs": [
@@ -50,7 +50,7 @@
     {
       "name": "Website",
       "icon": "globe-pointer",
-      "url": "https://wwv.cccambox.com"
+      "url": "https://web.HIDDEN.com"
     },
     { "name": "Github", "icon": "github", "url": "https://github.com" }
   ],
@@ -77,6 +77,6 @@
   ],
 
   "footerSocials": {
-    "website": "https://wwv.cccambox.com"
+    "website": "https://web.HIDDEN.com"
   }
 }
