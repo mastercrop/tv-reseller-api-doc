@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "CCCambox TV Reseller API",
+  "name": "CCCAMBOX TV RESELLER API [BETA]",
   "versions": ["v1"],
   "logo": {
     "dark": "/logo/dark.svg",
