@@ -2,14 +2,14 @@
 Title: Error Handling
 ---
 
-Our API responses use standard HTTP status codes: `2xx` status codes indicate success, `4xx` status codes indicate invalid input or invalid action on current state, and `5xx` status codes indicate a rare error on CCCambox's servers.
+Our API responses use standard HTTP status codes: `2xx` status codes indicate success, `4xx` status codes indicate invalid input or invalid action on current state, and `5xx` status codes indicate a rare error on CCCAMBOX TV's servers.
 
 ## Error handling
 
-Errors that you will receive from CCCambox fall into two major categories:
+Errors that you will receive from CCCAMBOX TV fall into two major categories:
 
 - **Client errors:** Invalid content in the API request.
-- **Server errors:** A problem on CCCambox's server.
+- **Server errors:** A problem on CCCAMBOX TV's server.
 
 A list of all error codes is provided at the of this page.
 
@@ -21,7 +21,7 @@ There are caveats to the above. For example, if you receive a `429` error due to
 
 ### Server errors
 
-Server errors result from a problem with CCCambox's servers. They return an HTTP response with a `5xx` error code. These errors are the most difficult to handle and the CCCambox team tries our best to ensure they occur as rarely as possible. The most likely time to observe a server error is during a production incident. You should treat the result of a server error as indeterminate.
+Server errors result from a problem with CCCAMBOX TV's servers. They return an HTTP response with a `5xx` error code. These errors are the most difficult to handle and the CCCAMBOX TV team tries our best to ensure they occur as rarely as possible. The most likely time to observe a server error is during a production incident. You should treat the result of a server error as indeterminate.
 
 For server errors, we recommend retrying with new requests if it is safe for your use case. In addition, we recommend leveraging `requestId` and Accounts to properly group requests to make it easy to track objects that were re-created.
 
@@ -54,4 +54,4 @@ Below is a list of possible error codes with their meanings.
 | 404 - Not Found                    | The requested resource doesn't exist.                                                                        |
 | 409 - Conflict                     | The request conflicts with another request, often due to attempting to create a duplicate resource.          |
 | 429 - Too Many Requests            | Your organization's rate limit has been exceeded. We recommend an exponential backoff on requests.           |
-| 500, 502, 503, 504 - Server Errors | Something went wrong on CCCambox's end. These are rare.                                                      |
+| 500, 502, 503, 504 - Server Errors | Something went wrong on CCCAMBOX TV's end. These are rare.                                                      |
