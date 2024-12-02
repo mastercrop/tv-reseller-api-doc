@@ -18,3 +18,14 @@ Each change can be described as either a breaking change or an ongoing change.
 🔧 Fix<br/>
 💥 Breaking change<br/>
 🔒 Security-related
+
+## December 2, 2024
+
+### Update Line ID Type
+
+- 💥 **Breaking Change:** Due to a database migration, all line IDs are now strings instead of numbers. This change ensures better compatibility and future-proofing of the API.
+
+### Update/Delete line using MAC Address
+
+- 💥 **Breaking Change:** The endpoint for updating a line using the MAC Address has been modified. You must now use the key **new_macaddress** instead of **macaddress**.
+- 🌱 **New feature:** Added the ability to update or delete a line using only the MAC Address.
