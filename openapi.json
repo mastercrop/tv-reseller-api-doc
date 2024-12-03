@@ -199,19 +199,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -446,19 +446,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -710,19 +710,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -1130,19 +1130,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -1437,19 +1437,19 @@
                             "type": "string",
                             "nullable": true,
                             "description": "Date of expiration of the line.",
-                            "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                            "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                           },
                           "start_date": {
                             "type": "string",
                             "nullable": true,
                             "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                            "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                            "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                           },
                           "created_at": {
                             "type": "string",
                             "nullable": true,
                             "description": "Initial creation date of the line.",
-                            "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                            "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                           }
                         },
                         "required": [
@@ -1619,19 +1619,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -1816,19 +1816,19 @@
                       "type": "string",
                       "nullable": true,
                       "description": "Date of expiration of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "start_date": {
                       "type": "string",
                       "nullable": true,
                       "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     },
                     "created_at": {
                       "type": "string",
                       "nullable": true,
                       "description": "Initial creation date of the line.",
-                      "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                      "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                     }
                   },
                   "required": [
@@ -2033,19 +2033,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
@@ -2285,19 +2285,19 @@
                           "type": "string",
                           "nullable": true,
                           "description": "Date of expiration of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "start_date": {
                           "type": "string",
                           "nullable": true,
                           "description": "Starting date of the line (Creation date or Extension date if the line has been extended).",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         },
                         "created_at": {
                           "type": "string",
                           "nullable": true,
                           "description": "Initial creation date of the line.",
-                          "example": "Mon Dec 02 2024 21:46:08 GMT+0100 (GMT+01:00)"
+                          "example": "Tue Dec 03 2024 18:44:34 GMT+0100 (GMT+01:00)"
                         }
                       },
                       "required": [
