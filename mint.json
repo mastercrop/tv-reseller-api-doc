@@ -27,12 +27,12 @@
   "topbarLinks": [
     {
       "name": "Login",
-      "url": "https://web.HIDDEN.com/dashboard"
+      "url": "https://cccambox.com/dashboard"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://web.HIDDEN.com/checkout/resellers"
+    "url": "https://cccambox.com/checkout/resellers"
   },
 
   "tabs": [
@@ -50,9 +50,8 @@
     {
       "name": "Website",
       "icon": "globe-pointer",
-      "url": "https://web.HIDDEN.com"
-    },
-    { "name": "Github", "icon": "github", "url": "https://github.com" }
+      "url": "https://cccambox.com"
+    }
   ],
 
   "navigation": [
@@ -77,6 +76,6 @@
   ],
 
   "footerSocials": {
-    "website": "https://web.HIDDEN.com"
+    "website": "https://cccambox.com"
   }
 }
