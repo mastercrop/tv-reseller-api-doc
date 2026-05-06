@@ -22,8 +22,14 @@
       "get": {
         "summary": "Get Credits",
         "description": "Retrieve the current number of credits available to the authenticated entity.",
-        "tags": ["Credits System"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Credits System"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Ok: Return authenticated entity's credits.",
@@ -38,7 +44,9 @@
                       "example": 1000
                     }
                   },
-                  "required": ["credits"]
+                  "required": [
+                    "credits"
+                  ]
                 }
               }
             }
@@ -50,13 +58,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -68,13 +84,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -86,14 +110,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -105,8 +140,14 @@
       "post": {
         "summary": "Create Line",
         "description": "Create a regular line and deduct corresponding credits based on the chosen duration.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -115,7 +156,12 @@
                 "properties": {
                   "duration": {
                     "type": "string",
-                    "enum": ["1", "3", "6", "12"],
+                    "enum": [
+                      "1",
+                      "3",
+                      "6",
+                      "12"
+                    ],
                     "description": "The duration of the line in months. Valid values are '1', '3', '6', or '12'.",
                     "example": "12"
                   },
@@ -159,9 +205,15 @@
                   },
                   "bouquets": {
                     "type": "array",
-                    "items": { "type": "number" },
+                    "items": {
+                      "type": "number"
+                    },
                     "description": "The IDs of the bouquets to link on creation of the line.",
-                    "example": [1, 2, 3]
+                    "example": [
+                      1,
+                      2,
+                      3
+                    ]
                   },
                   "enabled": {
                     "type": "boolean",
@@ -169,7 +221,9 @@
                     "description": "Specifies whether the created line should be active or not."
                   }
                 },
-                "required": ["duration"]
+                "required": [
+                  "duration"
+                ]
               }
             }
           }
@@ -185,16 +239,39 @@
                     "line": {
                       "type": "object",
                       "properties": {
-                        "id": { "type": "string" },
-                        "hostname": { "type": "string", "nullable": true },
-                        "username": { "type": "string" },
-                        "password": { "type": "string" },
-                        "label": { "type": "string" },
-                        "enabled": { "type": "boolean" },
-                        "connections": { "type": "number" },
-                        "macaddress": { "type": "string", "nullable": true },
-                        "parental_code": { "type": "string", "nullable": true },
-                        "is_trial": { "type": "boolean" },
+                        "id": {
+                          "type": "string"
+                        },
+                        "hostname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "connections": {
+                          "type": "number"
+                        },
+                        "macaddress": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parental_code": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "is_trial": {
+                          "type": "boolean"
+                        },
                         "exp_date": {
                           "type": "string",
                           "nullable": true,
@@ -230,10 +307,20 @@
                         "created_at"
                       ]
                     },
-                    "deducedCredits": { "type": "number", "example": 25 },
-                    "newBalance": { "type": "number", "example": 4975 }
+                    "deducedCredits": {
+                      "type": "number",
+                      "example": 25
+                    },
+                    "newBalance": {
+                      "type": "number",
+                      "example": 4975
+                    }
                   },
-                  "required": ["line", "deducedCredits", "newBalance"]
+                  "required": [
+                    "line",
+                    "deducedCredits",
+                    "newBalance"
+                  ]
                 }
               }
             }
@@ -245,7 +332,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -258,21 +350,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -284,13 +392,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -304,7 +420,9 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["insufficient_balance"]
+                      "enum": [
+                        "insufficient_balance"
+                      ]
                     },
                     "message": {
                       "type": "string",
@@ -321,7 +439,11 @@
                       "example": 600
                     }
                   },
-                  "required": ["code", "message", "balance"]
+                  "required": [
+                    "code",
+                    "message",
+                    "balance"
+                  ]
                 }
               }
             }
@@ -345,7 +467,10 @@
                       "example": "Username already exists."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -357,13 +482,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -375,14 +508,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -392,8 +536,14 @@
       "get": {
         "summary": "Get Line Info",
         "description": "Allows to fetch all details associated with a specific line.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "schema": {
@@ -432,16 +582,39 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "hostname": { "type": "string", "nullable": true },
-                    "username": { "type": "string" },
-                    "password": { "type": "string" },
-                    "label": { "type": "string" },
-                    "enabled": { "type": "boolean" },
-                    "connections": { "type": "number" },
-                    "macaddress": { "type": "string", "nullable": true },
-                    "parental_code": { "type": "string", "nullable": true },
-                    "is_trial": { "type": "boolean" },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hostname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "connections": {
+                      "type": "number"
+                    },
+                    "macaddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "parental_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_trial": {
+                      "type": "boolean"
+                    },
                     "exp_date": {
                       "type": "string",
                       "nullable": true,
@@ -487,7 +660,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -500,21 +678,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -526,13 +720,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -544,13 +746,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -562,13 +772,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -580,14 +798,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -597,8 +826,14 @@
       "put": {
         "summary": "Update Line",
         "description": "Update line's info.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -622,13 +857,27 @@
                     "type": "object",
                     "properties": {
                       "new_username": {
-                        "anyOf": [{ "type": "string" }, { "type": "boolean" }],
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ],
                         "description": "The new username of the line. Must be RFC 3986 compliant. If the value is true, a random username will be generated.",
                         "minLength": 12,
                         "maxLength": 30
                       },
                       "password": {
-                        "anyOf": [{ "type": "string" }, { "type": "boolean" }],
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ],
                         "description": "The new password of the line. Must be RFC 3986 compliant. If the value is true, a random password will be generated.",
                         "minLength": 14,
                         "maxLength": 30
@@ -640,12 +889,26 @@
                         "example": "My TV Line"
                       },
                       "new_macaddress": {
-                        "anyOf": [{ "type": "string" }, { "type": "boolean" }],
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ],
                         "description": "The new MAC address to assign to the line. To remove the assigned macaddress, set false",
                         "example": "67:21:4C:24:76:97"
                       },
                       "parental_code": {
-                        "anyOf": [{ "type": "string" }, { "type": "boolean" }],
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ],
                         "description": "The new parental code of the MAG access. Should be 4 digits. Set false to remove parental code",
                         "example": "0000",
                         "maxLength": 4,
@@ -653,11 +916,22 @@
                       },
                       "bouquets": {
                         "anyOf": [
-                          { "type": "array", "items": { "type": "number" } },
-                          { "type": "boolean" }
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          {
+                            "type": "boolean"
+                          }
                         ],
                         "description": "The new IDs of the bouquets to link on creation of the line. To remove bouquets, set empty array or false",
-                        "example": [1, 2, 3]
+                        "example": [
+                          1,
+                          2,
+                          3
+                        ]
                       },
                       "enabled": {
                         "type": "boolean",
@@ -696,16 +970,39 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "hostname": { "type": "string", "nullable": true },
-                    "username": { "type": "string" },
-                    "password": { "type": "string" },
-                    "label": { "type": "string" },
-                    "enabled": { "type": "boolean" },
-                    "connections": { "type": "number" },
-                    "macaddress": { "type": "string", "nullable": true },
-                    "parental_code": { "type": "string", "nullable": true },
-                    "is_trial": { "type": "boolean" },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hostname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "connections": {
+                      "type": "number"
+                    },
+                    "macaddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "parental_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_trial": {
+                      "type": "boolean"
+                    },
                     "exp_date": {
                       "type": "string",
                       "nullable": true,
@@ -751,7 +1048,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -764,21 +1066,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -790,13 +1108,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -808,13 +1134,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -838,7 +1172,10 @@
                       "example": "Username already exists."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -850,13 +1187,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -868,14 +1213,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -885,8 +1241,14 @@
       "delete": {
         "summary": "Remove Line",
         "description": "Permanently delete a line from the system.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -918,9 +1280,17 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": { "success": { "type": "boolean" } },
-                  "required": ["success"],
-                  "example": { "success": true }
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "success"
+                  ],
+                  "example": {
+                    "success": true
+                  }
                 }
               }
             }
@@ -932,7 +1302,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -945,21 +1320,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -971,13 +1362,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -989,13 +1388,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1007,13 +1414,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1025,14 +1440,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -1044,8 +1470,14 @@
       "post": {
         "summary": "Create Trial Line",
         "description": "Create a trial line but does not deduct any credits.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1054,7 +1486,11 @@
                 "properties": {
                   "duration": {
                     "type": "string",
-                    "enum": ["12", "24", "48"],
+                    "enum": [
+                      "12",
+                      "24",
+                      "48"
+                    ],
                     "description": "The duration of the line in hours. Valid values are '12', '24' or '48'.",
                     "example": "48"
                   },
@@ -1090,9 +1526,15 @@
                   },
                   "bouquets": {
                     "type": "array",
-                    "items": { "type": "number" },
+                    "items": {
+                      "type": "number"
+                    },
                     "description": "The IDs of the bouquets to link on creation of the line.",
-                    "example": [1, 2, 3]
+                    "example": [
+                      1,
+                      2,
+                      3
+                    ]
                   },
                   "enabled": {
                     "type": "boolean",
@@ -1100,7 +1542,9 @@
                     "description": "Specifies whether the created line should be active or not."
                   }
                 },
-                "required": ["duration"]
+                "required": [
+                  "duration"
+                ]
               }
             }
           }
@@ -1116,16 +1560,39 @@
                     "line": {
                       "type": "object",
                       "properties": {
-                        "id": { "type": "string" },
-                        "hostname": { "type": "string", "nullable": true },
-                        "username": { "type": "string" },
-                        "password": { "type": "string" },
-                        "label": { "type": "string" },
-                        "enabled": { "type": "boolean" },
-                        "connections": { "type": "number" },
-                        "macaddress": { "type": "string", "nullable": true },
-                        "parental_code": { "type": "string", "nullable": true },
-                        "is_trial": { "type": "boolean" },
+                        "id": {
+                          "type": "string"
+                        },
+                        "hostname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "connections": {
+                          "type": "number"
+                        },
+                        "macaddress": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parental_code": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "is_trial": {
+                          "type": "boolean"
+                        },
                         "exp_date": {
                           "type": "string",
                           "nullable": true,
@@ -1161,10 +1628,20 @@
                         "created_at"
                       ]
                     },
-                    "deducedCredits": { "type": "number", "example": 0 },
-                    "newBalance": { "type": "number", "example": 5000 }
+                    "deducedCredits": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "newBalance": {
+                      "type": "number",
+                      "example": 5000
+                    }
                   },
-                  "required": ["line", "deducedCredits", "newBalance"]
+                  "required": [
+                    "line",
+                    "deducedCredits",
+                    "newBalance"
+                  ]
                 }
               }
             }
@@ -1176,7 +1653,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -1189,21 +1671,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -1215,13 +1713,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1235,7 +1741,9 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["insufficient_balance"]
+                      "enum": [
+                        "insufficient_balance"
+                      ]
                     },
                     "message": {
                       "type": "string",
@@ -1252,7 +1760,11 @@
                       "example": 600
                     }
                   },
-                  "required": ["code", "message", "balance"]
+                  "required": [
+                    "code",
+                    "message",
+                    "balance"
+                  ]
                 }
               }
             }
@@ -1276,7 +1788,10 @@
                       "example": "Username already exists."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1288,13 +1803,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1306,14 +1829,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -1325,8 +1859,14 @@
       "get": {
         "summary": "Get Active Lines",
         "description": "Fetch a list of all currently active lines.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "schema": {
@@ -1354,7 +1894,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["all", "active", "suspended"],
+              "enum": [
+                "all",
+                "active",
+                "suspended"
+              ],
               "default": "all",
               "description": "Status of the returned lines. Possible values: 'all', 'active', 'suspended'."
             },
@@ -1365,7 +1909,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["all", "premium", "trial"],
+              "enum": [
+                "all",
+                "premium",
+                "trial"
+              ],
               "default": "all",
               "description": "Type of the line to return. Possible values: 'all', 'premium', 'trial'."
             },
@@ -1376,7 +1924,12 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["id", "username", "enabled", "exp_date"],
+              "enum": [
+                "id",
+                "username",
+                "enabled",
+                "exp_date"
+              ],
               "default": "id",
               "description": "Field to sort lines by. Possible values: 'id', 'username', 'enabled', 'exp_date'."
             },
@@ -1387,7 +1940,10 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["asc", "desc"],
+              "enum": [
+                "asc",
+                "desc"
+              ],
               "default": "asc",
               "description": "Type of sort. Possible values: 'asc', 'desc'."
             },
@@ -1417,17 +1973,32 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": { "type": "string" },
-                          "username": { "type": "string" },
-                          "password": { "type": "string" },
-                          "enabled": { "type": "boolean" },
-                          "label": { "type": "string" },
-                          "macaddress": { "type": "string", "nullable": true },
+                          "id": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "password": {
+                            "type": "string"
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "macaddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
                           "parental_code": {
                             "type": "string",
                             "nullable": true
                           },
-                          "connections": { "type": "number" },
+                          "connections": {
+                            "type": "number"
+                          },
                           "is_trial": {
                             "type": "boolean",
                             "description": "Indicates whether the line is a trial. If the trial line is extended to a premium line, this field is set to false.",
@@ -1469,7 +2040,11 @@
                       }
                     }
                   },
-                  "required": ["totalHits", "totalReturns", "lines"]
+                  "required": [
+                    "totalHits",
+                    "totalReturns",
+                    "lines"
+                  ]
                 }
               }
             }
@@ -1481,7 +2056,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -1494,21 +2074,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -1520,13 +2116,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1538,13 +2142,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1556,14 +2168,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -1575,8 +2198,14 @@
       "put": {
         "summary": "Suspend Line",
         "description": "Temporarily disable access for a line.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1605,16 +2234,39 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "hostname": { "type": "string", "nullable": true },
-                    "username": { "type": "string" },
-                    "password": { "type": "string" },
-                    "label": { "type": "string" },
-                    "enabled": { "type": "boolean" },
-                    "connections": { "type": "number" },
-                    "macaddress": { "type": "string", "nullable": true },
-                    "parental_code": { "type": "string", "nullable": true },
-                    "is_trial": { "type": "boolean" },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hostname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "connections": {
+                      "type": "number"
+                    },
+                    "macaddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "parental_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_trial": {
+                      "type": "boolean"
+                    },
                     "exp_date": {
                       "type": "string",
                       "nullable": true,
@@ -1660,7 +2312,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -1673,21 +2330,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -1699,13 +2372,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1717,13 +2398,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1735,13 +2424,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1753,14 +2450,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -1772,8 +2480,14 @@
       "put": {
         "summary": "Unsuspend Line",
         "description": "Unsuspend access for a line.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1802,16 +2516,39 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "hostname": { "type": "string", "nullable": true },
-                    "username": { "type": "string" },
-                    "password": { "type": "string" },
-                    "label": { "type": "string" },
-                    "enabled": { "type": "boolean" },
-                    "connections": { "type": "number" },
-                    "macaddress": { "type": "string", "nullable": true },
-                    "parental_code": { "type": "string", "nullable": true },
-                    "is_trial": { "type": "boolean" },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hostname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "connections": {
+                      "type": "number"
+                    },
+                    "macaddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "parental_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_trial": {
+                      "type": "boolean"
+                    },
                     "exp_date": {
                       "type": "string",
                       "nullable": true,
@@ -1857,7 +2594,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -1870,21 +2612,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -1896,13 +2654,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1914,13 +2680,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1932,13 +2706,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1950,14 +2732,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -1969,8 +2762,14 @@
       "put": {
         "summary": "Upgrade Line",
         "description": "Add or remove extra connections",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2001,7 +2800,9 @@
                         "example": 2
                       }
                     },
-                    "required": ["new_connections"]
+                    "required": [
+                      "new_connections"
+                    ]
                   }
                 ]
               }
@@ -2019,16 +2820,39 @@
                     "line": {
                       "type": "object",
                       "properties": {
-                        "id": { "type": "string" },
-                        "hostname": { "type": "string", "nullable": true },
-                        "username": { "type": "string" },
-                        "password": { "type": "string" },
-                        "label": { "type": "string" },
-                        "enabled": { "type": "boolean" },
-                        "connections": { "type": "number" },
-                        "macaddress": { "type": "string", "nullable": true },
-                        "parental_code": { "type": "string", "nullable": true },
-                        "is_trial": { "type": "boolean" },
+                        "id": {
+                          "type": "string"
+                        },
+                        "hostname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "connections": {
+                          "type": "number"
+                        },
+                        "macaddress": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parental_code": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "is_trial": {
+                          "type": "boolean"
+                        },
                         "exp_date": {
                           "type": "string",
                           "nullable": true,
@@ -2064,10 +2888,20 @@
                         "created_at"
                       ]
                     },
-                    "deducedCredits": { "type": "number", "example": 25 },
-                    "newBalance": { "type": "number", "example": 4975 }
+                    "deducedCredits": {
+                      "type": "number",
+                      "example": 25
+                    },
+                    "newBalance": {
+                      "type": "number",
+                      "example": 4975
+                    }
                   },
-                  "required": ["line", "deducedCredits", "newBalance"]
+                  "required": [
+                    "line",
+                    "deducedCredits",
+                    "newBalance"
+                  ]
                 }
               }
             }
@@ -2079,7 +2913,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -2092,21 +2931,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -2118,13 +2973,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2138,7 +3001,9 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["insufficient_balance"]
+                      "enum": [
+                        "insufficient_balance"
+                      ]
                     },
                     "message": {
                       "type": "string",
@@ -2155,7 +3020,11 @@
                       "example": 600
                     }
                   },
-                  "required": ["code", "message", "balance"]
+                  "required": [
+                    "code",
+                    "message",
+                    "balance"
+                  ]
                 }
               }
             }
@@ -2167,13 +3036,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2185,13 +3062,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2203,14 +3088,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -2222,8 +3118,14 @@
       "put": {
         "summary": "Extend Line",
         "description": "Extend Line expiration date.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2248,12 +3150,19 @@
                     "properties": {
                       "duration": {
                         "type": "string",
-                        "enum": ["1", "3", "6", "12"],
+                        "enum": [
+                          "1",
+                          "3",
+                          "6",
+                          "12"
+                        ],
                         "description": "The duration of the line in months. Valid values are '1', '3', '6', or '12'.",
                         "example": "12"
                       }
                     },
-                    "required": ["duration"]
+                    "required": [
+                      "duration"
+                    ]
                   }
                 ]
               }
@@ -2271,16 +3180,39 @@
                     "line": {
                       "type": "object",
                       "properties": {
-                        "id": { "type": "string" },
-                        "hostname": { "type": "string", "nullable": true },
-                        "username": { "type": "string" },
-                        "password": { "type": "string" },
-                        "label": { "type": "string" },
-                        "enabled": { "type": "boolean" },
-                        "connections": { "type": "number" },
-                        "macaddress": { "type": "string", "nullable": true },
-                        "parental_code": { "type": "string", "nullable": true },
-                        "is_trial": { "type": "boolean" },
+                        "id": {
+                          "type": "string"
+                        },
+                        "hostname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "connections": {
+                          "type": "number"
+                        },
+                        "macaddress": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parental_code": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "is_trial": {
+                          "type": "boolean"
+                        },
                         "exp_date": {
                           "type": "string",
                           "nullable": true,
@@ -2316,10 +3248,20 @@
                         "created_at"
                       ]
                     },
-                    "deducedCredits": { "type": "number", "example": 25 },
-                    "newBalance": { "type": "number", "example": 4975 }
+                    "deducedCredits": {
+                      "type": "number",
+                      "example": 25
+                    },
+                    "newBalance": {
+                      "type": "number",
+                      "example": 4975
+                    }
                   },
-                  "required": ["line", "deducedCredits", "newBalance"]
+                  "required": [
+                    "line",
+                    "deducedCredits",
+                    "newBalance"
+                  ]
                 }
               }
             }
@@ -2331,7 +3273,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -2344,21 +3291,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -2370,13 +3333,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2390,7 +3361,9 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["insufficient_balance"]
+                      "enum": [
+                        "insufficient_balance"
+                      ]
                     },
                     "message": {
                       "type": "string",
@@ -2407,7 +3380,11 @@
                       "example": 600
                     }
                   },
-                  "required": ["code", "message", "balance"]
+                  "required": [
+                    "code",
+                    "message",
+                    "balance"
+                  ]
                 }
               }
             }
@@ -2419,13 +3396,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2439,14 +3424,20 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["unavailable_duration", "line_not_found"]
+                      "enum": [
+                        "unavailable_duration",
+                        "line_not_found"
+                      ]
                     },
                     "message": {
                       "type": "string",
                       "example": "Selected duration is not available."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2458,13 +3449,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2476,14 +3475,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -2495,8 +3505,14 @@
       "put": {
         "summary": "Simulate Upgrade Cost",
         "description": "Return the cost of the upgrade of the line.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2527,7 +3543,9 @@
                         "example": 2
                       }
                     },
-                    "required": ["new_connections"]
+                    "required": [
+                      "new_connections"
+                    ]
                   }
                 ]
               }
@@ -2541,8 +3559,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": { "cost": { "type": "number", "example": 25 } },
-                  "required": ["cost"]
+                  "properties": {
+                    "cost": {
+                      "type": "number",
+                      "example": 25
+                    }
+                  },
+                  "required": [
+                    "cost"
+                  ]
                 }
               }
             }
@@ -2554,7 +3579,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -2567,21 +3597,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -2593,13 +3639,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2611,13 +3665,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2629,13 +3691,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2647,14 +3717,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -2666,8 +3747,14 @@
       "put": {
         "summary": "Simulate Extension Cost",
         "description": "Return the cost of extending the line for the specified duration.",
-        "tags": ["Line Management"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Line Management"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2692,12 +3779,19 @@
                     "properties": {
                       "duration": {
                         "type": "string",
-                        "enum": ["1", "3", "6", "12"],
+                        "enum": [
+                          "1",
+                          "3",
+                          "6",
+                          "12"
+                        ],
                         "description": "The duration of the line in months. Valid values are '1', '3', '6', or '12'.",
                         "example": "12"
                       }
                     },
-                    "required": ["duration"]
+                    "required": [
+                      "duration"
+                    ]
                   }
                 ]
               }
@@ -2711,8 +3805,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": { "cost": { "type": "number", "example": 25 } },
-                  "required": ["cost"]
+                  "properties": {
+                    "cost": {
+                      "type": "number",
+                      "example": 25
+                    }
+                  },
+                  "required": [
+                    "cost"
+                  ]
                 }
               }
             }
@@ -2724,7 +3825,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["request_errors"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "request_errors"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Request error occurred."
@@ -2737,21 +3843,37 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "code": { "type": "string" },
-                              "message": { "type": "string" },
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
                               "path": {
                                 "type": "array",
-                                "items": { "type": "string" }
+                                "items": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "required": ["code", "message", "path"]
+                            "required": [
+                              "code",
+                              "message",
+                              "path"
+                            ]
                           }
                         }
                       },
-                      "required": ["errors"]
+                      "required": [
+                        "errors"
+                      ]
                     }
                   },
-                  "required": ["code", "message", "data"]
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
@@ -2763,13 +3885,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2781,13 +3911,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["line_not_found"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "line_not_found"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Line not found."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2801,14 +3939,20 @@
                   "properties": {
                     "code": {
                       "type": "string",
-                      "enum": ["unavailable_duration", "line_not_found"]
+                      "enum": [
+                        "unavailable_duration",
+                        "line_not_found"
+                      ]
                     },
                     "message": {
                       "type": "string",
                       "example": "Selected duration is not available."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2820,13 +3964,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2838,14 +3990,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
@@ -2857,8 +4020,14 @@
       "get": {
         "summary": "Get Available Bouquets",
         "description": "Get Available Bouquets details",
-        "tags": ["Bouquets"],
-        "security": [{ "ApiKeyAuth": [] }],
+        "tags": [
+          "Bouquets"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Ok: Return available bouquets",
@@ -2872,10 +4041,17 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": { "type": "number" },
-                          "label": { "type": "string" }
+                          "id": {
+                            "type": "number"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
                         },
-                        "required": ["id", "label"]
+                        "required": [
+                          "id",
+                          "label"
+                        ]
                       }
                     },
                     "movies": {
@@ -2883,14 +4059,24 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": { "type": "number" },
-                          "label": { "type": "string" }
+                          "id": {
+                            "type": "number"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
                         },
-                        "required": ["id", "label"]
+                        "required": [
+                          "id",
+                          "label"
+                        ]
                       }
                     }
                   },
-                  "required": ["channels", "movies"]
+                  "required": [
+                    "channels",
+                    "movies"
+                  ]
                 }
               }
             }
@@ -2902,13 +4088,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["not_authorized"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Not authorized to perform this action."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2920,13 +4114,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["rate_limit"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Rate limit exceeded."
                     }
                   },
-                  "required": ["code", "message"]
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2938,14 +4140,203 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": { "type": "string", "enum": ["server_error"] },
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
                     "message": {
                       "type": "string",
                       "example": "Internal server error occurred."
                     },
-                    "requestId": { "type": "string" }
+                    "requestId": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["code", "message", "requestId"]
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/statistics": {
+      "get": {
+        "summary": "Get Statistics",
+        "description": "Retrieve daily statistics about new trial lines, new premium lines, and expired lines.",
+        "tags": [
+          "Statistics"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "description": "Start date for the statistics range (inclusive). Format: YYYY-MM-DD.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "from",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "description": "End date for the statistics range (inclusive). Format: YYYY-MM-DD.",
+              "example": "2024-01-31"
+            },
+            "required": false,
+            "name": "to",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok: Returns an array of daily statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "The date of the statistics entry.",
+                        "example": "2024-01-15"
+                      },
+                      "new_trials": {
+                        "type": "integer",
+                        "description": "Number of new trial lines created on this date.",
+                        "example": 5
+                      },
+                      "new_premium": {
+                        "type": "integer",
+                        "description": "Number of new premium lines created on this date.",
+                        "example": 12
+                      },
+                      "expired": {
+                        "type": "integer",
+                        "description": "Number of lines that expired on this date.",
+                        "example": 3
+                      }
+                    },
+                    "required": [
+                      "date",
+                      "new_trials",
+                      "new_premium",
+                      "expired"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "date": "2024-01-14",
+                      "new_trials": 4,
+                      "new_premium": 10,
+                      "expired": 2
+                    },
+                    {
+                      "date": "2024-01-15",
+                      "new_trials": 5,
+                      "new_premium": 12,
+                      "expired": 3
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Auth Error: Not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "not_authorized"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Not authorized to perform this action."
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit error: too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "rate_limit"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Rate limit exceeded."
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error: handler died.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "server_error"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error occurred."
+                    },
+                    "requestId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "requestId"
+                  ]
                 }
               }
             }
