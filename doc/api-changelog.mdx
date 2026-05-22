@@ -1,5 +1,6 @@
 ---
 title: API Changelog
+tag: Updated
 ---
 
 ## About
@@ -17,19 +18,78 @@ Each change can be described as either a breaking change or an ongoing change.
 🍃 Improvement<br/>
 🔧 Fix<br/>
 💥 Breaking change<br/>
+⚠️ Deprecated<br/>
 🔒 Security-related
 
-## December 3, 2024
+<Update
+	label="May 21, 2026"
+	description="API filters, docs, and reliability improvements"
+>
+	### Account Information
 
-### Update Line ID Type
+    - 🌱 **New feature:** Added [`GET /v1/me`](/reference/overview/me) to return the authenticated account's `credits`, `lines_count`, and `server_information`.
+    - ⚠️ **Deprecated:** [`GET /v1/credits`](/reference/overview/get-credits) in favor of [`GET /v1/me`](/reference/overview/me).
 
-- 💥 **Breaking Change:** Due to a database migration, all line IDs are now strings instead of numbers. This change ensures better compatibility and future-proofing of the API.
+    ### Packages
 
-### Update/Delete line using MAC Address
+    - 🌱 **New feature:** Added [`GET /v1/packages`](/reference/overview/get-packages) to list available premium and trial packages, including `credits_cost`, `extra_connection_credits_cost`, and `min_balance` values.
+    - 🍃 **Improvement:** [`GET /v1/packages`](/reference/overview/get-packages) supports an optional `type` filter with `all`, `premium`, and `trial` values.
 
-- 💥 **Breaking Change:** The endpoint for updating a line using the MAC Address has been modified. You must now use the key **new_macaddress** instead of **macaddress**.
-- 🌱 **New feature:** Added the ability to update or delete a line using only the MAC Address.
+    ### Line Listing Filters
 
-### Adding hostname value to Get Lines path
+    - 🌱 **New feature:** Added a new `status=expiring` filter to [`GET /v1/lines/all`](/reference/line-management/get-active-lines) to return enabled lines expiring within the next 7 days.
+    - 🌱 **New feature:** Added the `search` query parameter to [`GET /v1/lines/all`](/reference/line-management/get-active-lines) to search lines by partial username, line ID, or label.
+    - 🌱 **New feature:** Added `orderBy=label` support to [`GET /v1/lines/all`](/reference/line-management/get-active-lines) so line listings can be sorted by the exposed label field.
+    - 🍃 **Improvement:** The line listing documentation now reflects ISO 8601 datetime output examples more accurately.
+    - 🌱 **New feature:** Added pagination metadata to [`GET /v1/lines/all`](/reference/line-management/get-active-lines), including `offset`, `limit`, `hasNextPage`, `hasPreviousPage`, `nextOffset`, and `previousOffset`.
+    - 🍃 **Improvement:** Line ordering is now stabilized with a secondary `id` sort to make paginated results more consistent when multiple rows share the same primary sort value.
+    - 💥 **Breaking Change:** [`GET /v1/lines/all`](/reference/line-management/get-active-lines) now returns a summary line shape and no longer includes `macaddress` or `parental_code` in each list item. To retrieve those fields, query a specific line with [`GET /v1/lines`](/reference/line-management/get-line-info).
+    - 🌱 **New feature:** [`GET /v1/lines`](/reference/line-management/get-line-info) now returns the line's `bouquets` in addition to the existing detailed line fields.
 
-- 🌱 **New feature:** Added the **hostname** key to the Get Lines output.
+    ### Line Cost Simulation
+
+    - 🌱 **New feature:** Added `POST /v1/lines/simulate` to return the credit cost of creating a regular line without persisting it.
+    - 🌱 **New feature:** Added `POST /v1/lines/simulate/trial` to return the credit cost of creating a trial line without persisting it.
+
+    ### Documentation and OpenAPI
+
+    - 🌱 **New feature:** Added Swagger UI endpoints for the public OpenAPI document at [`/doc/ui`](https://api.reselliptv.com/doc/ui).
+
+
+    ### Rate Limiting
+
+    - 🍃 **Improvement:** API key rate limits are now **100 requests/minute** for `GET` requests and **20 requests/minute** for `POST`, `PUT`, and `DELETE` requests.
+    - 🍃 **Improvement:** Account-based rate limits are now **300 requests/minute** for `GET` requests and **60 requests/minute** for `POST`, `PUT`, and `DELETE` requests.
+    - 🍃 **Improvement:** Failed authentication attempts are limited to **10 requests/minute**.
+    - 🍃 **Improvement:** Rate limiting is now enforced at both the API key and authenticated account level, with the effective response headers reflecting the most restrictive active limit.
+    - 🍃 **Improvement:** Responses now include standard rate limit headers: `RateLimit-Policy`, `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset`.
+    - 🍃 **Improvement:** `429 Too Many Requests` responses now include a `Retry-After` header to indicate when requests can be retried.
+
+    For more information, see the [Rate Limiting](/doc/rate-limit) guide.
+
+    ### Authentication and Error Handling
+
+    - 🔒 **Security-related:** Authentication failures caused by invalid, disabled, banned, or missing credentials now resolve more consistently to `401 Not Authorized` responses.
+    - 🔧 **Fix:** Error reporting is more defensive for unauthenticated or malformed requests and avoids crashing when request bodies or members are unavailable.
+    - 🔧 **Fix:** `400 Bad Request` validation failures now return more consistent structured error details, making invalid request payloads easier to diagnose.
+
+</Update>
+
+<Update
+	label="December 3, 2024"
+	description="Line identifier and MAC address updates"
+>
+	### Update Line ID Type
+
+    - 💥 **Breaking Change:** Due to a database migration, all line IDs are now strings instead of numbers. This change ensures better compatibility and future-proofing of the API.
+
+    ### Update/Delete Line Using MAC Address
+
+    - 💥 **Breaking Change:** The endpoint for updating a line using the MAC Address has been modified. You must now use the key **new_macaddress** instead of **macaddress**.
+    - 🌱 **New feature:** Added the ability to update or delete a line using only the MAC Address.
+
+    ### Adding Hostname Value to Get Lines Path
+
+    - 🌱 **New feature:** Added the **hostname** key to the Get Lines output.
+
+</Update>

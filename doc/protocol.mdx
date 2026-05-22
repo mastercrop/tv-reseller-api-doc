@@ -1,5 +1,80 @@
 ---
 title: Protocol
+description: Learn which HTTP methods, headers, transport rules, and payload formats the CCCAMBOX TV API expects.
 ---
 
-The CCCAMBOX TV API uses `GET`, `POST`, `PATCH`, and `DELETE` requests to communicate and HTTP response codes to indicate status and errors. All responses come in standard `JSON`. HTTP and HTTPS with TLS versions below 1.1 are not supported. Requests should typically include a Content-Type of `application/json` and the body must be valid `JSON`.
+The CCCAMBOX TV API is a REST-style HTTP API. It uses standard HTTP methods,
+standard status codes, and JSON payloads.
+
+## Supported HTTP methods
+
+The API uses these request methods:
+
+- `GET` to retrieve data
+- `POST` to create resources or trigger actions
+- `PATCH` to partially update resources
+- `DELETE` to remove resources
+
+## Transport requirements
+
+All API requests must be sent over HTTPS. Plain HTTP is not supported.
+
+Requests made with outdated TLS versions are also rejected. Your HTTP client
+should use a modern TLS configuration.
+
+## Authentication
+
+Authenticated requests must include your API key in the `x-api-key` header:
+
+```http
+x-api-key: YOUR_API_KEY
+```
+
+For more details about creating and managing keys, see [API Keys](/doc/api-keys).
+
+## Request and response format
+
+All API responses are returned as JSON.
+
+When an endpoint accepts a request body, send it as JSON and include the
+following header:
+
+```http
+Content-Type: application/json
+```
+
+Your request body must be valid JSON that matches the schema documented for the
+endpoint you are calling.
+
+For `GET` requests, you usually do not need to send a request body.
+
+## Example request
+
+```bash
+curl --request GET \
+	--url https://api.reselliptv.com/v1/me \
+	--header 'x-api-key: YOUR_API_KEY'
+```
+
+Example of a JSON request body for a write operation:
+
+```bash
+curl --request POST \
+	--url https://api.reselliptv.com/v1/lines \
+	--header 'x-api-key: YOUR_API_KEY' \
+	--header 'Content-Type: application/json' \
+	--data '{
+		"duration": 12,
+		"label": "Living Room"
+	}'
+```
+
+## Status codes
+
+The API uses standard HTTP status codes to indicate the result of a request:
+
+- `2xx` for successful requests
+- `4xx` for client-side errors such as invalid input or authentication failures
+- `5xx` for unexpected server-side errors
+
+For a full explanation of how errors are returned, see [Error Handling](/doc/error-handling).

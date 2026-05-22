@@ -1,5 +1,56 @@
 ---
 title: Request IDs
+description: Learn what request IDs are, where to find them, and why they are useful when troubleshooting API issues.
 ---
 
-Each API request has an associated request identifier. You can find this value in the response headers, under `x-request-id`. If you need to contact us about a specific request, providing the request identifier will ensure the fastest possible resolution.
+Each API request is assigned a unique request identifier.
+
+This identifier helps trace a specific request through our systems and is useful
+when diagnosing errors, investigating unexpected behavior, or contacting
+support.
+
+## Where to find the request ID
+
+You can find the request ID in the response headers under `x-request-id`.
+
+Example:
+
+```http
+x-request-id: 6f3b3d9f-4c47-4fd7-8a53-0d7f0f4e6abc
+```
+
+## Why request IDs matter
+
+Include the request ID whenever you report an API issue. It allows us to locate
+the exact request more quickly and usually leads to faster troubleshooting.
+
+Request IDs are especially useful when:
+
+- A request returns an unexpected response
+- You receive a `5xx` server error
+- You want support to investigate a specific API call
+- You need to correlate API activity with your own logs
+
+## Request IDs in error responses
+
+For some server-side failures, the API may also include the request ID in the
+JSON response body as `requestId`.
+
+Example:
+
+```json
+{
+  "code": "server_error",
+  "message": "Internal server error occurred.",
+  "requestId": "6f3b3d9f-4c47-4fd7-8a53-0d7f0f4e6abc"
+}
+```
+
+## Recommended practice
+
+- Log the `x-request-id` value in your application logs
+- Save it when retrying or escalating failed requests
+- Include it in support messages whenever possible
+
+If you are debugging requests from the command line, use `curl -i` to display
+response headers so you can capture the request ID directly.

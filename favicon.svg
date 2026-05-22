@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="47px" height="47px" viewBox="0 0 47 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 9</title>
-    <g id="Members-Area-2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="00.-Members-Area---Notice-✅" transform="translate(-285.000000, -1036.000000)">
-            <g id="Section-2" transform="translate(262.000000, 941.000000)">
-                <g id="Group-9" transform="translate(23.000000, 95.000000)">
-                    <rect id="Rectangle" fill="#EFF2FA" x="0" y="0" width="47" height="47" rx="9.36"></rect>
-                    <g id="logo" transform="translate(14.381054, 11.344844)">
-                        <path d="M13.0535882,0 C5.84429052,0 0,5.37609399 0,12.007842 C0,18.63959 5.84429052,24.015684 13.0535882,24.015684" id="Path" stroke="#5968D1" stroke-width="3.45080736" stroke-linecap="round"></path>
-                        <path d="M10.5592654,7.50115681 C9.48639773,6.81936673 8.61666667,7.29650744 8.61666667,8.56929015 L8.61666667,15.3426135 C8.61666667,16.6143173 9.49138814,17.0893656 10.5592654,16.4107468 L15.6267502,13.1904419 C16.6996178,12.5086519 16.6946274,11.4000804 15.6267502,10.7214617 L10.5592654,7.50115681 Z" id="Mask" fill="#5968D1"></path>
-                    </g>
-                </g>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <g id="path-1-link" fill="#2C3A8F">
+                <path d="M14.375,0 L31.625,0 C39.5640933,0 46,6.43590672 46,14.375 L46,31.625 C46,39.5640933 39.5640933,46 31.625,46 L14.375,46 C6.43590672,46 0,39.5640933 0,31.625 L0,14.375 C0,6.43590672 6.43590672,0 14.375,0 Z" id="path-1"></path>
+            </g>
+            <g id="Logo_icon" transform="translate(10, 7)">
+                <path d="M17.0645161,0 C7.64004411,0 0,6.93958638 0,15.5 C0,24.0604136 7.64004411,31 17.0645161,31" id="Path" stroke="#FFFFFF" stroke-width="6.158592" stroke-linecap="round"></path>
+                <path d="M11.1290323,14.0582697 L11.1290323,17.7167303 C11.1290323,19.4173785 12.50768,20.7960263 14.2083283,20.7960263 C14.7818368,20.7960263 15.3439491,20.6358639 15.8313295,20.3335854 L18.7806991,18.5043551 C20.2259483,17.6079963 20.6709118,15.7097479 19.774553,14.2644987 C19.5243154,13.8610268 19.184171,13.5208824 18.7806991,13.2706449 L15.8313295,11.4414146 C14.3860804,10.5450558 12.487832,10.9900193 11.5914731,12.4352684 C11.2891946,12.9226489 11.1290323,13.4847612 11.1290323,14.0582697 Z" id="Mask" fill="#FFFFFF"></path>
             </g>
         </g>
     </g>

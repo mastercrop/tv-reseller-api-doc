@@ -1,27 +1,48 @@
 ---
 title: Rate Limiting
 description: We use rate limiting to safeguard the stability of our API.
+tag: Updated
 ---
 
 ## Limits
 
-Rate limiting is a crucial feature for maintaining the stability and security of an API. It allows you to control the number of requests made to the API within a specific time period, preventing abuse, protecting server resources, and ensuring fair usage. By imposing restrictions on the number of requests per minute for each API key, rate limiting effectively mitigates unauthorized access, excessive usage, and potential denial-of-service attacks (DoS).
+Rate limits are evaluated over a 60-second window.
 
-To better understand the rate limits in place, please refer to the table below:
+| Request type                   | API key limit  | Account limit  |
+| ------------------------------ | -------------- | -------------- |
+| Failed authentication attempts | 10 per minute  | Not applicable |
+| GET requests                   | 100 per minute | 300 per minute |
+| POST, PUT, DELETE requests     | 20 per minute  | 60 per minute  |
 
-| Request                    | Rate limit     |
-| -------------------------- | -------------- |
-| Authentication             | 10 per minute  |
-| GET Requests               | 100 per minute |
-| POST, PUT, DELETE Requests | 50 per minute  |
+## How limits are applied
 
-Any request over the limit will return a 429 Too Many Requests error.
+Authenticated requests use two buckets: one for the API key and one for the authenticated account.
 
-Our server responses also return your API limit, remaining requests, and seconds until the limit resets as headers. If you `curl` the endpoints with the `-vvv` flag, you'll see the headers as such.
+The account limit is tracked separately for each account, route, and HTTP method.
 
-```
-...
-< X-RateLimit-Limit: 100
-< X-RateLimit-Remaining: 30
-< X-RateLimit-Reset: 53
+The response headers show the most restrictive active limit for that request.
+
+Authentication uses a separate limiter, and only failed login attempts count toward it.
+
+Any request over the limit returns a `429 Too Many Requests` response.
+
+## Rate limit headers
+
+Responses include standard rate limit headers.
+
+| Header                | Description                                                                    |
+| --------------------- | ------------------------------------------------------------------------------ |
+| `RateLimit-Policy`    | The current request limit and time window                                      |
+| `RateLimit-Limit`     | The maximum number of requests allowed in the active window                    |
+| `RateLimit-Remaining` | The number of requests still available in the active window                    |
+| `RateLimit-Reset`     | The number of seconds until the window resets                                  |
+| `Retry-After`         | Returned on `429` responses with the number of seconds to wait before retrying |
+
+Example response headers:
+
+```http
+RateLimit-Policy: 100;w=60
+RateLimit-Limit: 100
+RateLimit-Remaining: 30
+RateLimit-Reset: 53
 ```

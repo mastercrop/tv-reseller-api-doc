@@ -1,15 +1,56 @@
 ---
-title: Authentification
+title: Authentication
+description: Learn how to authenticate requests to the CCCAMBOX TV Reseller API using your API key.
 ---
 
-## How to use the API Key
+The CCCAMBOX TV Reseller API uses API keys to authenticate every protected
+request.
 
-The CCCAMBOX TV Reseller API uses API keys to authenticate requests. To generate an API Key, please refer to [API Keys page](/doc/api-keys).
+To create and manage keys, see [API Keys](/doc/api-keys).
 
-All API requests should include your API key in an `x-api-key` HTTP header as follows, replacing `$CCCAMBOX TV_API_KEY` with your actual key:
+## Send your API key
 
+Include your API key in the `x-api-key` HTTP header on every authenticated
+request:
+
+```http
+x-api-key: YOUR_API_KEY
 ```
-x-api-key: $CCCAMBOX TV_API_KEY
+
+If you store the key in an environment variable, you can reference it directly
+in your requests:
+
+```bash
+export CCCAMBOX_TV_API_KEY="YOUR_API_KEY"
+
+curl --request GET \
+	--url https://api.reselliptv.com/v1/me \
+	--header "x-api-key: $CCCAMBOX_TV_API_KEY"
 ```
 
-All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authentication will also fail.
+## HTTPS is required
+
+All API requests must be sent over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure).
+Plain HTTP requests are rejected.
+
+## Authentication failures
+
+If your API key is missing, invalid, or no longer active, the API will usually
+return a `401 Unauthorized` response.
+
+If authentication fails, check the following first:
+
+- The `x-api-key` header is present
+- The key value is correct and complete
+- The request is being sent over HTTPS
+- You are using the key for the intended account or environment
+
+## Security guidance
+
+- Keep API keys in server-side environments only
+- Do not expose them in frontend code, public repositories, or screenshots
+- Store them in environment variables, a password manager, or a secrets manager
+- Rotate keys immediately if you think a key has been exposed
+
+When a new API key is created, it is shown only once in the dashboard. Copy it
+immediately and store it safely.

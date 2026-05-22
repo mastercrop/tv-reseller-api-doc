@@ -1,12 +1,80 @@
 ---
 title: Pagination
+description: Learn how offset-based pagination works in the CCCAMBOX TV Reseller API and how to navigate between result pages.
+tag: Updated
 ---
 
-Pagination is a technique to retrieve large datasets in smaller chunks by dividing them into pages.<br />
-It uses `offset` and `limit` parameters to specify the starting point and maximum number of records per page.
-Adjusting the `offset` and `limit` values allows navigation through the dataset and retrieval of desired subsets.
+Some list endpoints support offset-based pagination so you can retrieve large
+result sets in smaller, predictable chunks.
 
-| Parameter | Description                                                                                                                                    |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| offset    | Specifies the starting point of the dataset. It determines the index of the first record to be retrieved.                                      |
-| limit     | Specifies the maximum number of records to be retrieved per page. It restricts the number of records returned in a single page of the dataset. |
+Pagination works with two query parameters:
+
+| Parameter | Description                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| `offset`  | The number of records to skip before returning results. Defaults to `0`.                             |
+| `limit`   | The maximum number of records to return in one request. Defaults to `20` and can be set up to `100`. |
+
+## How it works
+
+The API starts returning results at the position indicated by `offset`, then
+returns up to `limit` records.
+
+For example:
+
+- `offset=0&limit=20` returns the first 20 results
+- `offset=20&limit=20` returns the next 20 results
+- `offset=40&limit=20` returns the following 20 results
+
+This makes it easy to move through large collections page by page.
+
+## Example request
+
+```bash
+curl --request GET \
+	--url 'https://api.reselliptv.com/v1/lines?offset=0&limit=20' \
+	--header 'x-api-key: YOUR_API_KEY'
+```
+
+## Pagination metadata in responses
+
+Paginated responses may include metadata that helps you build next/previous
+navigation without recalculating offsets yourself.
+
+Common fields include:
+
+| Field             | Description                                                                      |
+| ----------------- | -------------------------------------------------------------------------------- |
+| `offset`          | The offset used for the current response.                                        |
+| `limit`           | The page size used for the current response.                                     |
+| `totalHits`       | The total number of matching records available.                                  |
+| `totalReturns`    | The number of records returned in the current response.                          |
+| `hasNextPage`     | Whether another page is available after the current one.                         |
+| `hasPreviousPage` | Whether a page exists before the current one.                                    |
+| `nextOffset`      | The offset to use for the next page, or `null` if there is no next page.         |
+| `previousOffset`  | The offset to use for the previous page, or `null` if there is no previous page. |
+
+Example response shape:
+
+```json
+{
+  "offset": 0,
+  "limit": 20,
+  "totalHits": 57,
+  "totalReturns": 20,
+  "hasNextPage": true,
+  "hasPreviousPage": false,
+  "nextOffset": 20,
+  "previousOffset": null,
+  "lines": []
+}
+```
+
+## Recommended usage
+
+- Start with `offset=0`
+- Use the response's `nextOffset` value to request the next page
+- Stop when `hasNextPage` is `false` or `nextOffset` is `null`
+- Use a smaller `limit` if you want faster, lighter responses
+
+If an endpoint supports pagination, its reference page will document the exact
+parameters and response fields available for that endpoint.

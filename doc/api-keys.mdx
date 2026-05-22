@@ -1,32 +1,148 @@
 ---
 title: API Keys
+description: Learn how to create, use, store, and rotate API keys for the CCCAMBOX TV Reseller API.
+tag: Updated
 ---
 
-To access the CCCAMBOX TV Reseller API, you will need an API key. You can view and manage your API keys in the [dashboard](https://web.hidden.com/dashboard).
+The CCCAMBOX TV Reseller API uses API keys to authenticate every request. You can create and manage your keys from the [dashboard](https://cccambox.com/dashboard).
+
+Your API key identifies your reseller account, so every request made with that key is treated as a request from your account. Keep it private and only use it in trusted server-side environments.
 
 <Warning>
-  It is important to keep your API keys secure. Treat them as sensitive
-  information and do not share them in publicly accessible areas such as GitHub
-  or client-side code. This helps prevent unauthorized access to your account
-  and protects your data.
+  API keys are sensitive credentials. Do not expose them in public GitHub
+  repositories, frontend code, mobile applications, browser storage, or shared
+  screenshots. Anyone with your key can send authenticated requests on behalf of
+  your account.
 </Warning>
 
-## Getting an API Key
+## What API keys are used for
 
-To create an API key, navigate to your account settings:
+API keys are required for all authenticated endpoints. You will use them to:
 
-<Frame>
-  <img src="/images/dashboard-settings.png" />
-</Frame>
+- Retrieve account and overview information
+- Create and manage lines
+- Access bouquet and package-related endpoints
+- Perform reseller actions from your own backend or internal tools
 
-Click the `GENERATE API KEY` button:
+All requests must be sent over HTTPS and must include your API key in the
+`x-api-key` header.
 
-<Frame>
-  <img src="/images/dashboard-settings-create-api-key.png" />
-</Frame>
+## Create an API key
 
-Then, give it a label & submit:
+Use the following steps to create a new API key from the dashboard:
 
-<Frame>
-  <img src="/images/dashboard-settings-api-key-created.png" />
-</Frame>
+<Steps>
+  <Step title="Open account settings">
+    Open your account settings in the dashboard.
+
+    <Frame>
+      <img src="/images/dashboard-settings.png" />
+    </Frame>
+
+  </Step>
+  <Step title="Generate a new key">
+    Click the `GENERATE API KEY` button.
+
+    <Frame>
+      <img src="/images/dashboard-settings-create-api-key.png" />
+    </Frame>
+
+  </Step>
+  <Step title="Add a descriptive label">
+    Enter a clear label, such as `production-api`, `staging`, or
+    `internal-tools`, then submit the form.
+
+    <Frame>
+      <img src="/images/dashboard-settings-api-key-created.png" />
+    </Frame>
+
+  </Step>
+  <Step title="Store the key immediately">
+    When the API key is generated, **it is shown only once**. Copy it
+    immediately and store it in a safe place such as a password manager,
+    encrypted secrets store, or secured environment variable manager.
+
+    Use labels that help you identify where a key is being used. This makes
+    future rotation and incident response much easier.
+
+  </Step>
+</Steps>
+
+## Use your API key in requests
+
+Include your API key in the `x-api-key` header on every request.
+
+```http
+x-api-key: YOUR_API_KEY
+```
+
+Here is a basic example using cURL:
+
+```bash
+curl --request GET \
+  --url https://api.reselliptv.com/v1/me \
+  --header 'x-api-key: YOUR_API_KEY'
+```
+
+If the key is valid, the API will authenticate the request and return the
+requested resource.
+
+You can also store the key in an environment variable and reference it in your
+commands:
+
+```bash
+export CCCAMBOX_TV_API_KEY="YOUR_API_KEY"
+
+curl --request GET \
+  --url https://api.reselliptv.com/v1/me \
+  --header "x-api-key: $CCCAMBOX_TV_API_KEY"
+```
+
+For a broader authentication overview, see [Authentification](/doc/authentification).
+
+## Best practices
+
+- Store API keys in environment variables or a secrets manager
+- Use separate keys for production, staging, and local development
+- Give each key a descriptive label tied to a single application or service
+- Rotate keys immediately if you suspect they were exposed
+- Never embed keys in client-side JavaScript, public apps, or browser requests
+
+If you are building an integration for customers or teammates, route requests
+through your backend instead of calling the reseller API directly from the
+client.
+
+## Managing keys safely
+
+You can view and manage your API keys from the dashboard. A good operational
+workflow is:
+
+<Steps>
+  <Step title="Create a replacement key">
+    Create a new key for the service that needs access.
+  </Step>
+  <Step title="Deploy the new key">
+    Deploy the new key to your server or automation environment.
+  </Step>
+  <Step title="Verify authentication succeeds">
+    Confirm requests succeed with the new key.
+  </Step>
+  <Step title="Remove old access">
+    Remove old or unused keys from active systems.
+  </Step>
+</Steps>
+
+This reduces downtime during rotation and helps limit the impact of accidental
+key exposure.
+
+## Troubleshooting
+
+If your request fails, check the following first:
+
+- The `x-api-key` header is present
+- The key value is complete and has no extra spaces
+- The request is being sent over HTTPS
+- You are using an active key from the correct account
+
+An invalid or missing key will usually return a `401 Unauthorized` response. For
+more details on API errors, see [Error Handling](/doc/error-handling).

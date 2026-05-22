@@ -1,0 +1,94 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "CCCAMBOX TV RESELLER API - BETA",
+  "fonts": {
+    "family": "Inter"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "colors": {
+    "primary": "#2c72eb",
+    "light": "#2c72eb",
+    "dark": "#2c72eb"
+  },
+  "favicon": "/favicon.ico",
+  "navigation": {
+    "versions": [
+      {
+        "version": "v1 (beta)",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": ["doc/introduction", "doc/api-changelog"]
+              },
+              {
+                "group": "API Overview",
+                "pages": [
+                  "doc/api-keys",
+                  "doc/versionning",
+                  "doc/protocol",
+                  "doc/authentification",
+                  "doc/pagination",
+                  "doc/making-requests",
+                  "doc/rate-limit",
+                  "doc/request-ids",
+                  "doc/error-handling"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "openapi": "openapi.json"
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Website",
+          "href": "https://cccambox.com/iptv-resellers",
+          "icon": "globe-pointer"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "api": {
+    "openapi": "openapi.json",
+    "mdx": {
+      "server": "https://api.reselliptv.com",
+      "auth": {
+        "method": "key",
+        "name": "x-api-key"
+      }
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Dashboard",
+        "href": "https://cccambox.com/dashboard"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://cccambox.com/iptv-resellers"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://cccambox.com/iptv-resellers"
+    }
+  }
+}

@@ -1,57 +1,131 @@
 ---
-Title: Error Handling
+title: Error Handling
+description: Learn how the CCCAMBOX TV Reseller API reports errors, which status codes to expect, and how to handle error responses correctly.
 ---
 
-Our API responses use standard HTTP status codes: `2xx` status codes indicate success, `4xx` status codes indicate invalid input or invalid action on current state, and `5xx` status codes indicate a rare error on CCCAMBOX TV's servers.
+The API uses standard HTTP status codes to indicate whether a request
+succeeded or failed.
 
-## Error handling
+- `2xx` indicates a successful request
+- `4xx` indicates a client-side problem such as invalid input, missing
+  authentication, or an action that cannot be performed
+- `5xx` indicates an unexpected server-side failure
 
-Errors that you will receive from CCCAMBOX TV fall into two major categories:
+## Error categories
 
-- **Client errors:** Invalid content in the API request.
-- **Server errors:** A problem on CCCAMBOX TV's server.
+Errors generally fall into two groups:
 
-A list of all error codes is provided at the of this page.
+- **Client errors**: the request must be corrected before retrying
+- **Server errors**: the request may be valid, but the API failed while handling it
 
 ### Client errors
 
-Client errors result from invalid content of an API request. They return an HTTP response with a `4xx` error code. For example, the server may return a `401` if you provide an invalid API key, or a `422` if invalid parameters were provided. For client errors, we generally recommend correcting the original request and trying again.
+Client errors return a `4xx` status code. These usually mean one of the
+following:
 
-There are caveats to the above. For example, if you receive a `429` error due to your request being rate limited, subsequent requests with the same idempotency key will still run because rate limiters are executed before the API's idempotency layer. Similarly, the same goes for a `401` due to an invalid API key.
+- The request body or query parameters are invalid
+- Authentication is missing or invalid
+- The requested resource does not exist
+- The requested action is not allowed in the current state
+- Your account does not have enough balance to perform the action
+- You have exceeded the rate limit
+
+For client errors, correct the request before retrying.
 
 ### Server errors
 
-Server errors result from a problem with CCCAMBOX TV's servers. They return an HTTP response with a `5xx` error code. These errors are the most difficult to handle and the CCCAMBOX TV team tries our best to ensure they occur as rarely as possible. The most likely time to observe a server error is during a production incident. You should treat the result of a server error as indeterminate.
+Server errors return a `5xx` status code. These indicate that the API failed
+while processing an otherwise valid request.
 
-For server errors, we recommend retrying with new requests if it is safe for your use case. In addition, we recommend leveraging `requestId` and Accounts to properly group requests to make it easy to track objects that were re-created.
+When you receive a server error:
 
-## Error codes
+- Treat the result as indeterminate
+- Retry only when it is safe for your use case
+- Capture the `x-request-id` response header
+- Include the request ID if you contact support
 
-When an erorr is encountered, the response body contains a list of errors with title and details.
+## Error response format
 
-```json
+Error responses are returned as JSON. In most cases, you can expect at least a
+stable `code` field and a human-readable `message` field.
+
+The examples below show a typical authentication error, a validation error, and
+a server-side failure:
+
+<CodeGroup>
+```json 400
 {
   "code": "request_errors",
+  "message": "Request error occurred.",
   "data": {
     "errors": [
       {
-        "code": "<string>",
-        "message": "<string>",
-        "path": ["<string>"]
+        "code": "invalid_type",
+        "message": "Expected string, received number",
+        "path": ["label"]
       }
     ]
   }
 }
 ```
 
-Below is a list of possible error codes with their meanings.
+```json 401
+{
+  "code": "not_authorized",
+  "message": "Not authorized to perform this action."
+}
+```
 
-| HTTP Status Code                   | Description                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 400 - Bad Request                  | The request was unacceptable, often due to invalid parameters.                                               |
-| 401 - Unauthorized                 | An invalid API key was provided.                                                                             |
-| 402 - Payment Required             | The requested action requires a payment. Your organization's balance is insufficient to perform this action. |
-| 404 - Not Found                    | The requested resource doesn't exist.                                                                        |
-| 409 - Conflict                     | The request conflicts with another request, often due to attempting to create a duplicate resource.          |
-| 429 - Too Many Requests            | Your organization's rate limit has been exceeded. We recommend an exponential backoff on requests.           |
-| 500, 502, 503, 504 - Server Errors | Something went wrong on CCCAMBOX TV's end. These are rare.                                                      |
+```json 500
+{
+  "code": "server_error",
+  "message": "Internal server error occurred.",
+  "requestId": "6f3b3d9f-4c47-4fd7-8a53-0d7f0f4e6abc"
+}
+```
+
+</CodeGroup>
+
+Depending on the failure type, the response may include additional details:
+
+- Validation errors can include a structured `data.errors` array with field-level
+  information such as the invalid path, the validation code, and a specific
+  message.
+- Malformed JSON may return a simpler `400` response with only `code` and
+  `message`.
+- Server errors can include a `requestId` field in the response body so you can
+  correlate the failure with logs or share it with support.
+
+## Common status codes
+
+| HTTP Status Code            | Meaning                                                                                             |
+| --------------------------- | --------------------------------------------------------------------------------------------------- |
+| `400 Bad Request`           | The request could not be processed because parameters, query values, or the JSON body were invalid. |
+| `401 Unauthorized`          | The API key is missing, invalid, disabled, or not authorized for the request.                       |
+| `402 Payment Required`      | The action requires more balance than is currently available on the account.                        |
+| `404 Not Found`             | The requested resource could not be found.                                                          |
+| `406 Not Acceptable`        | The requested action is not compatible with the target resource or selected duration.               |
+| `409 Conflict`              | The request conflicts with existing data, such as a username or MAC address that already exists.    |
+| `429 Too Many Requests`     | The rate limit has been exceeded. Retry with backoff.                                               |
+| `500 Internal Server Error` | An unexpected server-side error occurred.                                                           |
+
+## Common error codes
+
+The API may return error codes such as:
+
+- `request_errors`
+- `not_authorized`
+- `insufficient_balance`
+- `member_not_found`
+- `api_key_not_found`
+- `api_key_disabled`
+- `username_already_exist`
+- `macaddress_already_exist`
+- `line_not_authorized`
+- `line_not_found`
+- `unavailable_duration`
+- `rate_limit`
+- `server_error`
+
+Handle the `code` field programmatically when you need stable application logic,
+and use the `message` field for human-readable debugging information.

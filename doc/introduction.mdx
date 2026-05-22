@@ -1,22 +1,122 @@
 ---
 title: Introduction
-description: Welcome to the CCCAMBOX TV IPTV Reseller API documentation. This API allows you to manage credits, lines, and packages for IPTV resellers. The API is organized around REST and is designed to have predictable, resource-oriented URLs and to use HTTP response codes to indicate API errors.
+description: Start here to understand what the CCCAMBOX TV Reseller API does, how to make your first request, and where to find each part of the documentation.
 ---
 
-## API Reference
+The CCCAMBOX TV Reseller API lets you manage reseller operations
+programmatically. You can use it to inspect account information, create and
+manage lines, work with bouquets, estimate package costs, and automate common
+reseller workflows from your own backend or internal tools.
 
-The CCCAMBOX TV Reseller API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts [form-encoded request bodies](<https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms>), returns [JSON-encoded](http://www.json.org/) responses, and uses standard HTTP response codes, authentication, and verbs.
+The API is a REST-style HTTP API with predictable resource-oriented URLs. It
+uses JSON request and response bodies, standard HTTP methods, and standard HTTP
+status codes.
 
-You can use the CCCAMBOX TV Reseller API in test mode, which doesn’t affect your live data. The API key you use to [authenticate](/documentation/authentification) the request determines whether the request is live mode or test mode.
-
-{/* The CCCAMBOX TV Reseller API differs for every account as we release new versions and tailor functionality. Log in to see docs with your test key and data. */}
+All authenticated requests must be sent over HTTPS and must include your API
+key in the `x-api-key` header.
 
 ## Base URL
 
-```
+```text
 https://api.reselliptv.com/v1
 ```
 
-By following this documentation, you can seamlessly integrate with our API to enhance your IPTV reseller operations. For detailed information on each endpoint, please refer to the respective sections.
+## What you can do with the API
 
-This introduction provides a concise and informative overview of the API's purpose and essential usage details. If you have any questions or need further assistance, please don't hesitate to contact us. We are here to help you succeed!
+With the API, you can:
+
+- Retrieve account information such as credits, line count, and server details
+- Create, update, extend, suspend, unsuspend, and remove lines
+- Create trial lines when your account is eligible
+- List available bouquets and inspect line information
+- Estimate upgrade or extension costs before performing an action
+- Integrate reseller operations into your own applications and automations
+
+## Quick start
+
+If you are new to the API, this is the fastest path to your first successful
+integration:
+
+<Steps>
+  <Step title="Create an API key">
+    Create an API key by following [our guide](/doc/api-keys).
+  </Step>
+  <Step title="Authenticate requests">
+    Learn how to authenticate requests in
+    [Authentication](/doc/authentification).
+  </Step>
+  <Step title="Send your first request">
+    Send your first request using [Making Requests](/doc/making-requests).
+  </Step>
+  <Step title="Review production basics">
+    Review [Protocol](/doc/protocol), [Rate Limiting](/doc/rate-limit), and
+    [Error Handling](/doc/error-handling) before moving to production.
+  </Step>
+</Steps>
+
+## Documentation summary
+
+The documentation is organized into two main parts: narrative guides and the
+endpoint reference.
+
+### Getting Started
+
+- [Introduction](/doc/introduction): overview of the API, quick start path, and documentation map
+- [API Changelog](/doc/api-changelog): recent API additions, improvements, fixes, deprecations, and breaking changes
+
+### API Overview Guides
+
+- [API Keys](/doc/api-keys): how to create, store, rotate, and safely use API keys
+- [Versioning](/doc/versionning): how API versions work and which changes are considered breaking
+- [Protocol](/doc/protocol): HTTP methods, HTTPS requirements, headers, JSON payloads, and status code basics
+- [Authentication](/doc/authentification): how to send the `x-api-key` header and troubleshoot authentication failures
+- [Pagination](/doc/pagination): how `offset` and `limit` work for paginated list endpoints
+- [Making Requests](/doc/making-requests): first request walkthrough using cURL and the `/v1/me` endpoint
+- [Rate Limiting](/doc/rate-limit): request quotas, rate limit headers, and retry guidance
+- [Request IDs](/doc/request-ids): where to find `x-request-id` and how to use it for debugging and support
+- [Error Handling](/doc/error-handling): error response formats, common error codes, and retry guidance
+
+### API Reference
+
+The API reference contains endpoint-level details generated from the OpenAPI
+document, including parameters, request bodies, response schemas, and example
+responses.
+
+The current reference is organized around these areas:
+
+- `Overview`: account-level information such as `GET /v1/me`
+- `Line Management`: create, list, update, extend, upgrade, suspend, unsuspend, and remove lines
+- `Bouquets`: list available bouquets
+- `Credits System`: credit-related account operations and legacy credit endpoints
+
+## Recommended reading order
+
+If you are integrating the API for the first time, read the documentation in
+this order:
+
+<Steps>
+  <Step title="Create or review your API key">
+    Start with [API Keys](/doc/api-keys).
+  </Step>
+  <Step title="Learn how authentication works">
+    Continue with [Authentication](/doc/authentification).
+  </Step>
+  <Step title="Understand the API protocol">
+    Read [Protocol](/doc/protocol).
+  </Step>
+  <Step title="Send your first request">
+    Follow [Making Requests](/doc/making-requests).
+  </Step>
+  <Step title="Understand failure responses">
+    Review [Error Handling](/doc/error-handling).
+  </Step>
+  <Step title="Review request limits">
+    Read [Rate Limiting](/doc/rate-limit).
+  </Step>
+  <Step title="Move to the endpoint reference">
+    Finish with the endpoint you want to use in the API reference.
+  </Step>
+</Steps>
+
+This documentation should give you everything you need to move from initial
+setup to production-ready integration.

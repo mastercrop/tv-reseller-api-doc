@@ -1,0 +1,8 @@
+{
+  "name": "cccambox-reseller-documentation",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "mint dev"
+  }
+}
